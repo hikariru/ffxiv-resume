@@ -1,7 +1,7 @@
 import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
 import {World} from "./world";
 
-@Entity()
+@Entity({name: 'datacenters'})
 export class Datacenter {
     @PrimaryGeneratedColumn()
     readonly id: number;

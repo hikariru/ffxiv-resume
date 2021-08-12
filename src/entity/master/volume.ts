@@ -1,7 +1,7 @@
 import {Column, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
 import {Raid} from "./raid";
 
-@Entity()
+@Entity({name: 'volumes'})
 export class Volume {
     @PrimaryGeneratedColumn()
     readonly id: number;
