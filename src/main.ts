@@ -14,6 +14,6 @@ async function bootstrap() {
   app.set('view options', { layout: 'layouts/main' });
   hbs.registerPartials(join(__dirname, '..', '/views/partials'));
 
-  await app.listen(3000);
+  await app.listen(Number(process.env.PORT) || 3000);
 }
 bootstrap();
