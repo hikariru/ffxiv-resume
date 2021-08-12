@@ -9,6 +9,9 @@ export class Job {
     @Column({type: 'varchar'})
     name: string
 
+    @Column({type:'varchar'})
+    shortName: string
+
     @ManyToOne(() => Role, role => role.jobs, { onDelete: 'CASCADE' })
     role: Role
 }

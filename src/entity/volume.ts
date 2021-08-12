@@ -9,6 +9,9 @@ export class Volume {
     @Column({type: 'varchar'})
     title: string
 
+    @Column({type: 'varchar'})
+    patchNum: string
+
     @ManyToOne(() => Raid, raid => raid.volumes, { onDelete: 'CASCADE' })
     raid: Raid
 }
