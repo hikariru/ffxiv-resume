@@ -3,11 +3,13 @@
 <head>
     {{> common_meta }}
     {{> common_stylesheet }}
-    <title>{{ title }}</title>
+    <title>{{ title }} - FFXIV-Resume</title>
 </head>
 <body>
-<div id="container">
+<div class="container">
+    {{> navbar }}
     {{{ body }}}
+    {{> footer }}
 </div>
     {{> common_js }}
 </body>
