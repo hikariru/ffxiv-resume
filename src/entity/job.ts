@@ -4,14 +4,14 @@ import {Role} from "./role";
 @Entity()
 export class Job {
     @PrimaryGeneratedColumn()
-    id: number;
+    readonly id: number;
 
     @Column({type: 'varchar'})
-    name: string
+    readonly name: string
 
     @Column({type:'varchar'})
-    shortName: string
+    readonly shortName: string
 
     @ManyToOne(() => Role, role => role.jobs, { onDelete: 'CASCADE' })
-    role: Role
+    readonly role: Role
 }

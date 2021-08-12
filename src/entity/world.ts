@@ -4,11 +4,11 @@ import {Datacenter} from "./datacenter";
 @Entity()
 export class World {
     @PrimaryGeneratedColumn()
-    id: number;
+    readonly id: number;
 
     @Column()
-    name: string
+    readonly name: string
 
     @ManyToOne(() => Datacenter, datacenter => datacenter.worlds, { onDelete: 'CASCADE' })
-    datacenter: Datacenter
+    readonly datacenter: Datacenter
 }

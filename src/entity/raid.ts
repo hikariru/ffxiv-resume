@@ -4,11 +4,11 @@ import {Volume} from "./volume";
 @Entity()
 export class Raid {
     @PrimaryGeneratedColumn()
-    id: number;
+    readonly id: number;
 
     @Column({type: 'varchar'})
-    title: string
+    readonly title: string
 
     @OneToMany(()=> Volume, volume => volume.raid)
-    volumes: Volume[];
+    readonly volumes: Volume[];
 }

@@ -4,14 +4,14 @@ import {Raid} from "./raid";
 @Entity()
 export class Volume {
     @PrimaryGeneratedColumn()
-    id: number;
+    readonly id: number;
 
     @Column({type: 'varchar'})
-    title: string
+    readonly title: string
 
     @Column({type: 'varchar'})
-    patchNum: string
+    readonly patchNum: string
 
     @ManyToOne(() => Raid, raid => raid.volumes, { onDelete: 'CASCADE' })
-    raid: Raid
+    readonly raid: Raid
 }

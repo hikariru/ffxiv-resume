@@ -4,11 +4,11 @@ import {World} from "./world";
 @Entity()
 export class Datacenter {
     @PrimaryGeneratedColumn()
-    id: number;
+    readonly id: number;
 
     @Column({type: 'varchar'})
-    name: string
+    readonly name: string
 
     @OneToMany(()=> World, world => world.datacenter)
-    worlds: World[];
+    readonly worlds: World[];
 }
