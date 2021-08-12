@@ -9,6 +9,6 @@ export class World {
     @Column()
     readonly name: string
 
-    @ManyToOne(() => Datacenter, datacenter => datacenter.worlds, { onDelete: 'CASCADE' })
+    @ManyToOne(() => Datacenter, datacenter => datacenter.worlds, { onUpdate: 'CASCADE', onDelete: 'CASCADE' })
     readonly datacenter: Datacenter
 }

@@ -12,6 +12,6 @@ export class Job {
     @Column({type:'varchar'})
     readonly shortName: string
 
-    @ManyToOne(() => Role, role => role.jobs, { onDelete: 'CASCADE' })
+    @ManyToOne(() => Role, role => role.jobs, { onUpdate: 'CASCADE', onDelete: 'CASCADE' })
     readonly role: Role
 }
