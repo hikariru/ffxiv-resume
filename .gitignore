@@ -18,4 +18,4 @@ lerna-debug.log*
 /coverage
 /.nyc_output
 
-/.env
+.env

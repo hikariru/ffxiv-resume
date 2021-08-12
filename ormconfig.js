@@ -5,14 +5,17 @@ module.exports = {
   "username": process.env.DB_USER,
   "password": process.env.DB_PASS,
   "database": process.env.DB_NAME,
+  "ssl": {
+    rejectUnauthorized: false
+  },
   "synchronize": true,
   "logging": false,
-  "entities": ["dist/src/app/entity/**/*.js"],
-  "migrations": ["dist/src/app/migration/**/*.js"],
-  "subscribers": ["dist/src/app/subscriber/**/*.js"],
+  "entities": ["dist/src/entity/**/*.js"],
+  "migrations": ["dist/src/migration/**/*.js"],
+  "subscribers": ["dist/src/subscriber/**/*.js"],
   "cli": {
-    "entitiesDir": "dist/src/app/entity",
-    "migrationsDir": "dist/src/app/migration",
-    "subscribersDir": "dist/src/app/subscriber"
+    "entitiesDir": "src/entity",
+    "migrationsDir": "src/migration",
+    "subscribersDir": "src/subscriber"
   }
 };
