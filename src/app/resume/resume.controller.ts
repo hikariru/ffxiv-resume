@@ -2,7 +2,7 @@ import {Controller, Get, Render, Req, Res} from '@nestjs/common';
 import { Request, Response } from 'express';
 
 @Controller('resume')
-export class LandingController {
+export class ResumeController {
     @Get('create')
     @Render('resume/create')
     create() {

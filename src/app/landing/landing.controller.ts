@@ -5,7 +5,7 @@ import { Request, Response } from 'express';
 export class LandingController {
     @Get()
     @Render('index')
-    index(@Req() req: Request, @Res() res: Response) {
+    index() {
         return {title: 'Hello!'};
     }
 }
