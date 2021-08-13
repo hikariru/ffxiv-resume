@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import {LandingModule} from "./app/landing/landing.module";
+import { LandingModule } from './app/landing/landing.module';
 
 @Module({
   imports: [LandingModule],

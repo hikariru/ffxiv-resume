@@ -1,14 +1,14 @@
-import {Column, Entity, OneToMany, PrimaryGeneratedColumn} from "typeorm";
-import {Volume} from "./volume";
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
+import { Volume } from './volume';
 
-@Entity({name: 'raids'})
+@Entity({ name: 'raids' })
 export class Raid {
-    @PrimaryGeneratedColumn()
-    readonly id: number;
+  @PrimaryGeneratedColumn()
+  readonly id: number;
 
-    @Column({type: 'varchar'})
-    readonly title: string
+  @Column({ type: 'varchar' })
+  readonly title: string;
 
-    @OneToMany(()=> Volume, volume => volume.raid)
-    readonly volumes: Volume[];
+  @OneToMany(() => Volume, (volume) => volume.raid)
+  readonly volumes: Volume[];
 }

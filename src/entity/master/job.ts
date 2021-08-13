@@ -1,17 +1,30 @@
-import {Column, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
-import {Role} from "./role";
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
+import { Role } from './role';
 
-@Entity({name: 'jobs'})
+@Entity({ name: 'jobs' })
 export class Job {
-    @PrimaryGeneratedColumn()
-    readonly id: number;
+  @PrimaryGeneratedColumn()
+  readonly id: number;
 
-    @Column({type: 'varchar'})
-    readonly name: string
+  @Column({ type: 'varchar' })
+  readonly name: string;
 
-    @Column({type:'varchar'})
-    readonly shortName: string
+  @Column({ type: 'varchar' })
+  readonly shortName: string;
 
-    @ManyToOne(() => Role, role => role.jobs, { onUpdate: 'CASCADE', onDelete: 'CASCADE' })
-    readonly role: Role
+  @Column()
+  readonly roleId: number;
+
+  @ManyToOne(() => Role, (role) => role.jobs, {
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
+  })
+  @JoinColumn({ name: 'roleId' })
+  readonly role: Role;
 }

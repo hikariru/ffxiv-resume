@@ -1,14 +1,17 @@
-import {Column, Entity, ManyToOne, PrimaryGeneratedColumn} from "typeorm";
-import {Datacenter} from "./datacenter";
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Datacenter } from './datacenter';
 
-@Entity({name: 'worlds'})
+@Entity({ name: 'worlds' })
 export class World {
-    @PrimaryGeneratedColumn()
-    readonly id: number;
+  @PrimaryGeneratedColumn()
+  readonly id: number;
 
-    @Column()
-    readonly name: string
+  @Column()
+  readonly name: string;
 
-    @ManyToOne(() => Datacenter, datacenter => datacenter.worlds, { onUpdate: 'CASCADE', onDelete: 'CASCADE' })
-    readonly datacenter: Datacenter
+  @ManyToOne(() => Datacenter, (datacenter) => datacenter.worlds, {
+    onUpdate: 'CASCADE',
+    onDelete: 'CASCADE',
+  })
+  readonly datacenter: Datacenter;
 }
