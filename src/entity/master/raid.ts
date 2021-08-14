@@ -6,7 +6,7 @@ export class Raid {
   @PrimaryGeneratedColumn()
   readonly id: number
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', length: 255 })
   readonly title: string
 
   @OneToMany(() => Volume, (volume) => volume.raid)

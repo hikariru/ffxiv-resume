@@ -6,7 +6,7 @@ export class World {
   @PrimaryGeneratedColumn()
   readonly id: number
 
-  @Column()
+  @Column({ type: 'varchar', length: 255 })
   readonly name: string
 
   @ManyToOne(() => Datacenter, (datacenter) => datacenter.worlds, {

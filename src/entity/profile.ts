@@ -22,7 +22,7 @@ export class Profile {
   @JoinColumn({ name: 'mainJobId' })
   mainJob: Job
 
-  @Column({ type: 'varchar', nullable: true })
+  @Column({ type: 'varchar', length: 255, nullable: true })
   activeTime?: string
 
   @Column({ type: 'boolean' })
@@ -37,11 +37,7 @@ export class Profile {
   @UpdateDateColumn()
   readonly updatedAt?: Date
 
-  constructor(
-    canVoiceChat: boolean,
-    activeTime?: string,
-    description?: string,
-  ) {
+  constructor(canVoiceChat: boolean, activeTime?: string, description?: string) {
     this.canVoiceChat = canVoiceChat
     this.activeTime = activeTime
     this.description = description

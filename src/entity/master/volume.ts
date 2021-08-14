@@ -6,10 +6,10 @@ export class Volume {
   @PrimaryGeneratedColumn()
   readonly id: number
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', length: 255 })
   readonly title: string
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', length: 255 })
   readonly patchNum: string
 
   @ManyToOne(() => Raid, (raid) => raid.volumes, { onUpdate: 'CASCADE' })

@@ -15,10 +15,10 @@ export class Player {
   @PrimaryGeneratedColumn()
   readonly id?: number
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', length: 255 })
   firstName: string
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', length: 255 })
   lastName: string
 
   @Column({ type: 'int' })
@@ -27,7 +27,7 @@ export class Player {
   @OneToOne(() => Profile)
   profile: Profile
 
-  @Column({ type: 'varchar', nullable: true })
+  @Column({ type: 'varchar', length: 255 })
   password?: string
 
   @ManyToOne(() => World)

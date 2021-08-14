@@ -6,7 +6,7 @@ export class Role {
   @PrimaryGeneratedColumn()
   readonly id: number
 
-  @Column({ type: 'varchar' })
+  @Column({ type: 'varchar', length: 255 })
   readonly name: string
 
   @OneToMany(() => Job, (job) => job.role, { onUpdate: 'CASCADE' })
