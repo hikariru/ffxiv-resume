@@ -1,17 +1,17 @@
 import { Module } from '@nestjs/common'
 import { ResumeController } from './resume.controller'
 import { CreateResumeService } from './createResume.service'
-import { JobService } from '../services/job.service'
+import { RoleService } from '../services/role.service'
 import { DatacenterService } from '../services/datacenter.service'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { ServiceModule } from '../services/service.module'
-import { Job } from '../entity/master/job'
 import {Datacenter} from "../entity/master/datacenter";
+import {Role} from "../entity/master/role";
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Job, Datacenter]), ServiceModule],
+  imports: [TypeOrmModule.forFeature([Role, Datacenter]), ServiceModule],
   controllers: [ResumeController],
-  providers: [CreateResumeService, DatacenterService, JobService],
+  providers: [CreateResumeService, DatacenterService, RoleService],
   exports: [],
 })
 export class ResumeModule {}
