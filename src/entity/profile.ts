@@ -15,7 +15,6 @@ import { Job } from './master/job'
 export class Profile {
   @PrimaryColumn('int', { name: 'playerId' })
   @OneToOne(() => Player, (player) => player.profile, { onDelete: 'CASCADE' })
-  @JoinColumn({ name: 'playerId', referencedColumnName: 'id' })
   player: Player
 
   @ManyToOne(() => Job)
