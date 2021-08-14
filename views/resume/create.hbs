@@ -1,0 +1,34 @@
+<form>
+  <div class="mb-3">
+    <div class="row g-3 m-3">
+      <div class="col-md-3">
+        <label for="first-name" class="form-label">First Name*</label>
+        <input type="text" class="form-control" id="first-name"required pattern="^[A-Z].[a-z]+$?">
+      </div>
+      <div class="col-md-3">
+        <label for="first-name" class="form-label">Last Name*</label>
+        <input type="text" class="form-control" id="last-name" required pattern="^[A-Z].[a-z]+$">
+      </div>
+      <p class="col-md-12 form-text">ゲーム内の姓名を入力してください</p>
+      <div class="col-md-6">
+        <label for="character-id" class="form-label">Lodestone URL*</label>
+        <div class="input-group">
+          <span class="input-group-text" id="basic-addon3">https://jp.finalfantasyxiv.com/lodestone/character/</span>
+          <input type="text" class="form-control" id="character-id" required pattern="^[0-9]+$">
+        </div>
+      </div>
+      <p class="col-md-12 form-text">
+        <a href="https://jp.finalfantasyxiv.com/lodestone/my/" target="_blank" rel="noreferrer noopener">Lodestone</a>
+        の「マイキャラクター」ページのURLの末尾の数字を入力してください</p>
+      <div class="col-md-3">
+        <label for="world" class="form-label">World*</label>
+        <input type="text" class="form-control" id="world"required">
+      </div>
+      <div class="col-md-3">
+        <label for="job" class="form-label">Main Job*</label>
+        <input type="text" class="form-control" id="job" required>
+      </div>
+    </div>
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
