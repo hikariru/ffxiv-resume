@@ -1,0 +1,24 @@
+<div class="col-md-3">
+  <label for="world" class="form-label">ワールド*</label>
+  <select class="form-select" id="world">
+    {{#each datacenters}}
+      <optgroup label="{{ name }}">
+        {{#each worlds}}
+          <option value="{{ id }}">{{ name }}</option>
+        {{/each}}
+      </optgroup>
+    {{/each }}
+  </select>
+</div>
+<div class="col-md-3">
+  <label for="job" class="form-label">メインジョブ*</label>
+  <select class="form-select" id="job">
+    {{#each roles}}
+      <optgroup label="{{ name }}">
+        {{#each jobs}}
+          <option value="{{ id }}">{{ name }}</option>
+        {{/each}}
+      </optgroup>
+    {{/each }}
+  </select>
+</div>

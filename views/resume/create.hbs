@@ -1,79 +1,17 @@
 <form>
   <div class="m-3">
     <div class="row g-3 justify-content-center">
-      <div class="col-md-3">
-        <label for="first-name" class="form-label">名*</label>
-        <input type="text" class="form-control" id="first-name" required pattern="^[A-Z].[a-z]+$?">
-      </div>
-      <div class="col-md-3">
-        <label for="first-name" class="form-label">姓*</label>
-        <input type="text" class="form-control" id="last-name" required pattern="^[A-Z].[a-z]+$">
-      </div>
+      {{> resume/name_input }}
       <div class="w-100 d-none d-md-block"></div>
-      <p class="col-md-6 form-text"><i class="bi bi-check-circle"></i> ゲーム内の姓名を入力してください。</p>
+      {{> resume/lodestone_input }}
       <div class="w-100 d-none d-md-block"></div>
-      <div class="col-md-6">
-        <label for="character-id" class="form-label">Lodestone URL*</label>
-        <div class="input-group">
-          <span class="input-group-text"><i class="bi bi-link-45deg"></i>https://jp.finalfantasyxiv.com/lodestone/character/</span>
-          <input type="text" class="form-control" id="character-id" required pattern="^\d+$">
-        </div>
-      </div>
+      {{> resume/world_and_job }}
       <div class="w-100 d-none d-md-block"></div>
-      <p class="col-md-6 form-text">
-        <i class="bi bi-check-circle"></i> <a href="https://jp.finalfantasyxiv.com/lodestone/my/" target="_blank" rel="noreferrer noopener">Lodestone</a>
-        の「マイキャラクター」ページのURLの末尾の数字を入力してください。<br>
-        <i class="bi bi-exclamation-triangle"></i> 入力された数字はLogsの表示にも利用されます。
-      </p>
+      {{> resume/active_time }}
       <div class="w-100 d-none d-md-block"></div>
-      <div class="col-md-3">
-        <label for="world" class="form-label">ワールド*</label>
-        <select class="form-select" id="world">
-          {{#each datacenters}}
-            <optgroup label="{{ name }}">
-              {{#each worlds}}
-                <option value="{{ id }}">{{ name }}</option>
-              {{/each}}
-            </optgroup>
-          {{/each }}
-        </select>
-      </div>
-      <div class="col-md-3">
-        <label for="job" class="form-label">メインジョブ*</label>
-        <select class="form-select" id="job">
-          {{#each roles}}
-            <optgroup label="{{ name }}">
-              {{#each jobs}}
-                <option value="{{ id }}">{{ name }}</option>
-              {{/each}}
-            </optgroup>
-          {{/each }}
-        </select>
-      </div>
+      {{> resume/can_vc }}
       <div class="w-100 d-none d-md-block"></div>
-      <div class="col-md-6 align-self-center">
-        <label for="active-time" class="form-label">プレイ時間帯</label>
-        <input type="text" class="form-control" id="active-time">
-      </div>
-      <div class="w-100 d-none d-md-block"></div>
-      <p class="col-md-6 form-text">
-        <i class="bi bi-emoji-smile"></i> (例: 平日21:00-24:00, 休日19:00-24:00)
-      </p>
-      <div class="w-100 d-none d-md-block"></div>
-      <div class="col-md-6">
-        <div class="form-check">
-          <input class="form-check-input" type="checkbox" id="can-vc">
-          <label class="form-check-label" for="can-vc">
-            VC可
-          </label>
-        </div>
-      </div>
-      <div class="w-100 d-none d-md-block"></div>
-      <div class="col-md-6">
-        <label for="description" class="form-label">アピールポイント</label>
-        <textarea type="text" class="form-control" id="description"></textarea>
-      </div>
-      <div class="w-100 d-none d-md-block"></div>
+      {{> resume/description }}
       <div class="col-6">
         <button type="submit" class="btn w-100 btn-primary"><i class="bi bi-play-circle"></i> 登録する</button>
       </div>
