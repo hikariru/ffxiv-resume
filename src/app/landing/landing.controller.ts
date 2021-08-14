@@ -1,11 +1,10 @@
-import {Controller, Get, Render, Req, Res} from '@nestjs/common';
-import { Request, Response } from 'express';
+import { Controller, Get, Render} from '@nestjs/common';
 
 @Controller()
 export class LandingController {
-    @Get()
-    @Render('index')
-    index() {
-        return {title: 'Hello!'};
-    }
+  @Get()
+  @Render('index')
+  index() {
+    return { title: 'Hello!' };
+  }
 }

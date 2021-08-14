@@ -3,12 +3,14 @@
 <head>
     {{> common_meta }}
     {{> common_stylesheet }}
-    <title>{{ title }} - FF14 Job</title>
+    <title>{{ title }} - FF14 Resume</title>
 </head>
 <body>
 <div class="container">
     {{> navbar }}
-    {{{ body }}}
+    <div id="content">
+        {{{ body }}}
+    </div>
     {{> footer }}
 </div>
     {{> common_js }}

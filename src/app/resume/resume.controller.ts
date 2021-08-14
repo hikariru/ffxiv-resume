@@ -1,11 +1,10 @@
-import {Controller, Get, Render, Req, Res} from '@nestjs/common';
-import { Request, Response } from 'express';
+import { Controller, Get, Render} from '@nestjs/common';
 
 @Controller('resume')
 export class ResumeController {
-    @Get('create')
-    @Render('resume/create')
-    create() {
-        return {title: 'Hello!'};
-    }
+  @Get('create')
+  @Render('resume/create')
+  create() {
+    return { title: 'Hello!' };
+  }
 }
