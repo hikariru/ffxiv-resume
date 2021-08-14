@@ -9,7 +9,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm'
 import { Player } from './player'
-import { Job } from './master/job'
+import { Job } from '../master/job'
 
 @Entity({ name: 'profiles' })
 export class Profile {

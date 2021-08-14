@@ -7,7 +7,7 @@ import {
   PrimaryGeneratedColumn,
   UpdateDateColumn,
 } from 'typeorm'
-import { World } from './master/world'
+import { World } from '../master/world'
 import { Profile } from './profile'
 
 @Entity({ name: 'players' })
