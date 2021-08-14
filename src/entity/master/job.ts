@@ -4,27 +4,27 @@ import {
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
-} from 'typeorm';
-import { Role } from './role';
+} from 'typeorm'
+import { Role } from './role'
 
 @Entity({ name: 'jobs' })
 export class Job {
   @PrimaryGeneratedColumn()
-  readonly id: number;
+  readonly id: number
 
   @Column({ type: 'varchar' })
-  readonly name: string;
+  readonly name: string
 
   @Column({ type: 'varchar' })
-  readonly shortName: string;
+  readonly shortName: string
 
   @Column()
-  readonly roleId: number;
+  readonly roleId: number
 
   @ManyToOne(() => Role, (role) => role.jobs, {
     onUpdate: 'CASCADE',
     onDelete: 'CASCADE',
   })
   @JoinColumn({ name: 'roleId' })
-  readonly role: Role;
+  readonly role: Role
 }

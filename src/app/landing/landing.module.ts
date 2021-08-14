@@ -1,5 +1,5 @@
-import { Module } from '@nestjs/common';
-import { LandingController } from './landing.controller';
+import { Module } from '@nestjs/common'
+import { LandingController } from './landing.controller'
 
 @Module({
   controllers: [LandingController],
