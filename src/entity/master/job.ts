@@ -18,13 +18,6 @@ export class Job {
   @Column({ type: 'varchar' })
   readonly shortName: string
 
-  @Column()
-  readonly roleId: number
-
-  @ManyToOne(() => Role, (role) => role.jobs, {
-    onUpdate: 'CASCADE',
-    onDelete: 'CASCADE',
-  })
-  @JoinColumn({ name: 'roleId' })
+  @ManyToOne(() => Role, (role) => role.jobs, { onDelete: 'CASCADE' })
   readonly role: Role
 }

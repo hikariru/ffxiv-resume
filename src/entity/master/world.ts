@@ -11,7 +11,6 @@ export class World {
 
   @ManyToOne(() => Datacenter, (datacenter) => datacenter.worlds, {
     onUpdate: 'CASCADE',
-    onDelete: 'CASCADE',
   })
   readonly datacenter: Datacenter
 }

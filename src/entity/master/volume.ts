@@ -12,9 +12,6 @@ export class Volume {
   @Column({ type: 'varchar' })
   readonly patchNum: string
 
-  @ManyToOne(() => Raid, (raid) => raid.volumes, {
-    onUpdate: 'CASCADE',
-    onDelete: 'CASCADE',
-  })
+  @ManyToOne(() => Raid, (raid) => raid.volumes, { onUpdate: 'CASCADE' })
   readonly raid: Raid
 }

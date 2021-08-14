@@ -9,9 +9,6 @@ export class Role {
   @Column({ type: 'varchar' })
   readonly name: string
 
-  @OneToMany(() => Job, (job) => job.role, {
-    onUpdate: 'CASCADE',
-    onDelete: 'CASCADE',
-  })
+  @OneToMany(() => Job, (job) => job.role, { onUpdate: 'CASCADE' })
   readonly jobs: Job[]
 }
