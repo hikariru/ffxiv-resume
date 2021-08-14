@@ -1,7 +1,7 @@
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
-import {Datacenter} from "../entity/master/datacenter";
-import {Injectable} from "@nestjs/common";
+import { Datacenter } from '../entity/master/datacenter'
+import { Injectable } from '@nestjs/common'
 
 @Injectable()
 export class DatacenterService {
