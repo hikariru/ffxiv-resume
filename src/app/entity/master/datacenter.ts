@@ -13,9 +13,8 @@ export class Datacenter {
   @ManyToOne(() => Country, (country) => country.datacenters, {
     onUpdate: 'CASCADE',
   })
-  readonly datacenter: Datacenter
-  country: Country
+  readonly country: Country
 
-  @OneToMany(() => World, (world) => world.datacenter)
+  @OneToMany(() => World, (world) => world.datacenter, { eager: true })
   readonly worlds: World[]
 }

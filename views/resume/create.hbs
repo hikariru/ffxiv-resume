@@ -22,7 +22,15 @@
         の「マイキャラクター」ページのURLの末尾の数字を入力してください</p>
       <div class="col-md-3">
         <label for="world" class="form-label">World*</label>
-        <input type="text" class="form-control" id="world"required">
+        <select class="form-select" id="world" required>
+          {{#each datacenters}}
+            <optgroup label="{{ name }}">
+              {{#each worlds}}
+                <option value="{{ id }}">{{ name }}</option>
+              {{/each}}
+            </optgroup>
+          {{/each }}
+        </select>
       </div>
       <div class="col-md-3">
         <label for="job" class="form-label">Main Job*</label>

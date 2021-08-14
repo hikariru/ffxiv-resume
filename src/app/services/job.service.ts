@@ -10,7 +10,7 @@ export class JobService {
     private readonly jobRepository: Repository<Job>,
   ) {}
 
-  async findAllJobs(): Promise<Job[]> {
+  async findAll(): Promise<Job[]> {
     return await this.jobRepository.find()
   }
 }

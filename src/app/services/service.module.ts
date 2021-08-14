@@ -1,13 +1,13 @@
 import { Module } from '@nestjs/common'
 import { JobService } from './job.service'
-import { WorldService } from './world.service'
+import { DatacenterService } from './datacenter.service'
 import { TypeOrmModule } from '@nestjs/typeorm'
 import { Job } from '../entity/master/job'
-import { World } from '../entity/master/world'
+import {Datacenter} from "../entity/master/datacenter";
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Job, World])],
-  providers: [JobService, WorldService],
-  exports: [JobService, WorldService],
+  imports: [TypeOrmModule.forFeature([Job, Datacenter])],
+  providers: [JobService, DatacenterService],
+  exports: [JobService, DatacenterService],
 })
 export class ServiceModule {}
