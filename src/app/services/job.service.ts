@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common'
-import {Job} from "../entity/master/job";
+import { Job } from '../entity/master/job'
 import { InjectRepository } from '@nestjs/typeorm'
 import { Repository } from 'typeorm'
 
