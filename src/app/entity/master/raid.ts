@@ -9,6 +9,6 @@ export class Raid {
   @Column({ type: 'varchar', length: 255 })
   readonly title: string
 
-  @OneToMany(() => Volume, (volume) => volume.raid)
-  readonly volumes: Volume[]
+  @OneToMany(() => Volume, (volume) => volume.raid, { eager: true })
+  volumes: Volume[]
 }
