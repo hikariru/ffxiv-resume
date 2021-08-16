@@ -10,6 +10,7 @@ import {
 } from 'typeorm'
 import { Player } from './player'
 import { Job } from '../master/job'
+import { IsInt } from 'class-validator'
 
 @Entity({ name: 'profiles' })
 export class Profile {
@@ -21,6 +22,7 @@ export class Profile {
   readonly player: Player
 
   @Column()
+  @IsInt()
   mainJobId: number
 
   @ManyToOne(() => Job)
@@ -46,7 +48,7 @@ export class Profile {
     this.playerId = playerId
     this.mainJobId = mainJobId
     this.canVoiceChat = canVoiceChat
-    this.activeTime = activeTime
-    this.description = description
+    this.activeTime = activeTime ?? ''
+    this.description = description ?? ''
   }
 }

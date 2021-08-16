@@ -1,4 +1,4 @@
-import {ArgumentsHost, Catch, ExceptionFilter, NotFoundException} from '@nestjs/common'
+import { ArgumentsHost, Catch, ExceptionFilter, NotFoundException } from '@nestjs/common'
 import { Response } from 'express'
 
 @Catch(NotFoundException)
@@ -7,6 +7,6 @@ export class NotFoundExceptionFilter implements ExceptionFilter {
     const httpArgumentsHost = host.switchToHttp()
     const response = httpArgumentsHost.getResponse<Response>()
 
-    return response.render('404', {title: "404 Page Not Found"})
+    return response.render('404', { title: '404 Page Not Found' })
   }
 }

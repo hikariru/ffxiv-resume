@@ -1,4 +1,6 @@
 import {
+  AfterLoad,
+  BeforeInsert,
   Column,
   CreateDateColumn,
   Entity,
@@ -12,6 +14,9 @@ import {
 import { World } from '../master/world'
 import { Profile } from './profile'
 import { RaidProgress } from './raidProgress'
+import { IsInt, Matches } from 'class-validator'
+import bcrypt from 'bcrypt'
+require('dotenv').config()
 
 @Entity({ name: 'players' })
 export class Player {
@@ -19,12 +24,15 @@ export class Player {
   readonly id?: number
 
   @Column({ type: 'varchar', length: 255 })
+  @Matches("^[A-Z][a-z'-]{0,13}[a-z]$", 'i')
   firstName: string
 
   @Column({ type: 'varchar', length: 255 })
+  @Matches("^[A-Z][a-z'-]{0,13}[a-z]$", 'i')
   lastName: string
 
   @Column({ type: 'int' })
+  @IsInt()
   characterId: number
 
   @OneToOne(() => Profile)
@@ -33,10 +41,13 @@ export class Player {
   @OneToMany(() => RaidProgress, (raidProgress) => raidProgress.player)
   raidProgress: RaidProgress
 
+  rawPassword: string
+
   @Column({ type: 'varchar', length: 255 })
   password?: string
 
   @Column()
+  @IsInt()
   worldId: number
 
   @ManyToOne(() => World)
@@ -49,10 +60,25 @@ export class Player {
   @UpdateDateColumn()
   readonly updatedAt?: Date
 
-  constructor(firstName: string, lastName: string, characterId: number, worldId: number) {
+  constructor(firstName: string, lastName: string, characterId: number, worldId: number, rawPassword?: string) {
     this.firstName = firstName
     this.lastName = lastName
     this.characterId = characterId
     this.worldId = worldId
+    if (rawPassword) {
+      this.rawPassword = rawPassword
+    }
+  }
+
+  @AfterLoad()
+  private loadPassword() {
+    this.rawPassword = this.password
+  }
+
+  @BeforeInsert()
+  private async encryptPassword() {
+    if (this.rawPassword !== this.password) {
+      this.password = await bcrypt.hash(this.rawPassword, process.env.SALT)
+    }
   }
 }
