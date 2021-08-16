@@ -6,12 +6,12 @@ module.exports = {
   },
   synchronize: true,
   logging: false,
-  entities: ["dist/app/entities/**/*.js"],
+  entities: ["dist/app/entity/**/*.js"],
   migrations: ["dist/app/migration/**/*.js"],
   subscribers: ["dist/app/subscriber/**/*.js"],
   cli: {
-    entitiesDir: "src/app/entities",
-    migrationsDir: "src/app/app/migration",
+    entitiesDir: "src/app/entity",
+    migrationsDir: "src/app/migration",
     subscribersDir: "src/app/subscriber"
   }
 };

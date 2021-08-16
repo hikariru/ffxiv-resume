@@ -13,13 +13,19 @@ import { Job } from '../master/job'
 
 @Entity({ name: 'profiles' })
 export class Profile {
-  @PrimaryColumn('int', { name: 'playerId' })
+  @PrimaryColumn({ type: 'int' })
+  playerId: number
+
   @OneToOne(() => Player, (player) => player.profile, { onDelete: 'CASCADE' })
-  player: Player
+  @JoinColumn({ name: 'playerId' })
+  readonly player: Player
+
+  @Column()
+  mainJobId: number
 
   @ManyToOne(() => Job)
   @JoinColumn({ name: 'mainJobId' })
-  mainJob: Job
+  readonly mainJob: Job
 
   @Column({ type: 'varchar', length: 255, nullable: true })
   activeTime?: string
@@ -36,7 +42,9 @@ export class Profile {
   @UpdateDateColumn()
   readonly updatedAt?: Date
 
-  constructor(canVoiceChat: boolean, activeTime?: string, description?: string) {
+  constructor(playerId: number, mainJobId: number, canVoiceChat: boolean, activeTime?: string, description?: string) {
+    this.playerId = playerId
+    this.mainJobId = mainJobId
     this.canVoiceChat = canVoiceChat
     this.activeTime = activeTime
     this.description = description

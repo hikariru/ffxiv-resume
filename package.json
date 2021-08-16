@@ -32,6 +32,7 @@
       "@types/hbs": "^4.0.1",
       "@types/node": "^16.0.0",
       "@types/supertest": "^2.0.11",
+      "class-validator": "^0.13.1",
       "hbs": "^4.1.2",
       "pg": "^8.7.1",
       "reflect-metadata": "^0.1.10",
