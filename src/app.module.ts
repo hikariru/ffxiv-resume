@@ -17,7 +17,7 @@ require('dotenv').config()
         rejectUnauthorized: false,
       },
       logging: false,
-      entities: ['./src/app/entity/**/*.ts', './dist/app/entity/**/*.js'],
+      entities: ['./app/entity/**/*.ts', './dist/app/entity/**/*.js'],
     }),
   ],
 })

@@ -10,7 +10,7 @@ import {
 } from 'typeorm'
 import { Player } from './player'
 import { Job } from '../master/job'
-import { IsInt } from 'class-validator'
+import { IsInt, Matches } from 'class-validator'
 
 @Entity({ name: 'profiles' })
 export class Profile {
@@ -32,8 +32,13 @@ export class Profile {
   @Column({ type: 'varchar', length: 255, nullable: true })
   activeTime?: string
 
-  @Column({ type: 'boolean' })
-  canVoiceChat: boolean
+  @Column({ type: 'varchar', nullable: true })
+  @Matches('^(w{1,15})$', 'i')
+  twitterId?: string
+
+  @Column({ type: 'varchar', nullable: true })
+  @Matches('^(.*)#(d{4})$', 'i')
+  discordId?: string
 
   @Column({ type: 'varchar', nullable: true })
   description?: string
@@ -44,10 +49,19 @@ export class Profile {
   @UpdateDateColumn()
   readonly updatedAt?: Date
 
-  constructor(playerId: number, mainJobId: number, boolean, activeTime?: string, description?: string) {
+  constructor(
+    playerId: number,
+    mainJobId: number,
+    twitterId: string,
+    discordId: string,
+    activeTime: string,
+    description: string,
+  ) {
     this.playerId = playerId
     this.mainJobId = mainJobId
-    this.activeTime = activeTime ?? ''
-    this.description = description ?? ''
+    this.twitterId = twitterId || null
+    this.discordId = discordId || null
+    this.activeTime = activeTime || null
+    this.description = description || null
   }
 }
