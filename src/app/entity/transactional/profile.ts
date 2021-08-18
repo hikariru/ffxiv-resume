@@ -32,11 +32,11 @@ export class Profile {
   @Column({ type: 'varchar', length: 255, nullable: true })
   activeTime?: string
 
-  @Column({ type: 'varchar', nullable: true })
+  @Column({ type: 'varchar', length: 255, nullable: true })
   @Matches('^(w{1,15})$', 'i')
   twitterId?: string
 
-  @Column({ type: 'varchar', nullable: true })
+  @Column({ type: 'varchar', length: 255, nullable: true })
   @Matches('^(.*)#(d{4})$', 'i')
   discordId?: string
 
