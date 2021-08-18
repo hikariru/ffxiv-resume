@@ -6,8 +6,8 @@ import { Datacenter } from '../entity/master/datacenter'
 import { Role } from '../entity/master/role'
 import { Raid } from '../entity/master/raid'
 import { RaidService } from './raid.service'
-import {Player} from "../entity/transactional/player";
-import {PlayerService} from "./player.service";
+import { Player } from '../entity/transactional/player'
+import { PlayerService } from './player.service'
 
 @Module({
   imports: [TypeOrmModule.forFeature([Role, Datacenter, Raid, Player])],

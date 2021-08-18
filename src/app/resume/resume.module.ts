@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common'
 import { ResumeController } from './resume.controller'
 import { CreateResumeService } from './createResume.service'
-import { ServiceModule } from '../services/service.module'
+import { ServiceModule } from '../service/service.module'
 
 @Module({
   imports: [ServiceModule],

@@ -1,6 +1,5 @@
 import {
-  AfterLoad,
-  BeforeInsert,
+  AfterLoad, BeforeInsert,
   Column,
   CreateDateColumn,
   Entity,
@@ -24,11 +23,11 @@ export class Player {
   readonly id?: number
 
   @Column({ type: 'varchar', length: 255 })
-  @Matches("^[A-Z][a-z'-]{0,13}[a-z]$", 'i')
+  @Matches("^[A-Z][a-z'-]{0,14}$", 'i')
   firstName: string
 
   @Column({ type: 'varchar', length: 255 })
-  @Matches("^[A-Z][a-z'-]{0,13}[a-z]$", 'i')
+  @Matches("^[A-Z][a-z'-]{0,14}$", 'i')
   lastName: string
 
   @Column({ type: 'int' })
@@ -68,6 +67,11 @@ export class Player {
     if (rawPassword) {
       this.rawPassword = rawPassword
     }
+  }
+
+  async validatePassword(password): Promise<boolean> {
+    const hasedPassword = await bcrypt.hash(this.rawPassword, process.env.SALT)
+    return this.password === hasedPassword
   }
 
   @AfterLoad()

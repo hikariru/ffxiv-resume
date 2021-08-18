@@ -1,8 +1,8 @@
 import { Controller, Get, Render } from '@nestjs/common'
 import { CreateResumeService } from './createResume.service'
-import { RoleService } from '../services/role.service'
-import { DatacenterService } from '../services/datacenter.service'
-import { RaidService } from '../services/raid.service'
+import { RoleService } from '../service/role.service'
+import { DatacenterService } from '../service/datacenter.service'
+import { RaidService } from '../service/raid.service'
 
 @Controller('resume')
 export class ResumeController {
@@ -16,6 +16,8 @@ export class ResumeController {
   @Get('create')
   @Render('resume/create')
   async create() {
+    // TODO:
+
     const datacenters = await this.datacenterService.findAll()
     const roles = await this.jobService.findAll()
     const raids = await this.raidService.findAll()

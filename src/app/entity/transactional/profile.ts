@@ -44,10 +44,9 @@ export class Profile {
   @UpdateDateColumn()
   readonly updatedAt?: Date
 
-  constructor(playerId: number, mainJobId: number, canVoiceChat: boolean, activeTime?: string, description?: string) {
+  constructor(playerId: number, mainJobId: number, boolean, activeTime?: string, description?: string) {
     this.playerId = playerId
     this.mainJobId = mainJobId
-    this.canVoiceChat = canVoiceChat
     this.activeTime = activeTime ?? ''
     this.description = description ?? ''
   }

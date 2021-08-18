@@ -1,22 +1,17 @@
-import { Injectable } from '@nestjs/common';
-import {PlayerService} from "../services/player.service";
+import { Injectable } from '@nestjs/common'
+import { PlayerService } from '../service/player.service'
 
 @Injectable()
 export class AuthService {
   constructor(private playerService: PlayerService) {}
 
-  async validatePlayer(characterId: number, token: string): Promise<any> {
-    const player = await this.playerService.findByCharacterId(characterId)
+  async validatePlayer(playerId: number, password: string): Promise<any> {
+    const player = await this.playerService.findByCharacterId(playerId)
 
-    const retrievedToken = await this.retrieveToken(characterId)
-    if (token === retrievedToken) {
-      return player;
+    if (await player.validatePassword(password)) {
+      return player
     }
 
-    return null;
-  }
-
-  async retrieveToken(characterId: number): Promise<string> {
-    return 'some retrieved token'
+    return null
   }
 }
