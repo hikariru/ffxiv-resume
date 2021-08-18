@@ -15,25 +15,24 @@ export class ResumeController {
   ) {}
 
   @Get('create')
-  @Render('resume/create')
   async create(@Req() req: Request, @Res() res: Response, @Session() session: Record<string, any>) {
-    // TODO: get characterId from session
-    const characterId = session.characterId || 12345
-    //  if (!characterId) {
-    //    res.redirect('/')
-    //  }
+    const characterId = session.characterId || 13821953 // Yoshi'p Sampo
+    if (!characterId) {
+      res.redirect('/')
+      return
+    }
 
     const datacenters = await this.datacenterService.findAll()
     const roles = await this.jobService.findAll()
     const raids = await this.raidService.findAll()
 
-    return {
+    return res.render('resume/create', {
       title: 'Create!',
       datacenters: datacenters,
       roles: roles,
       raids: raids,
       characterId: characterId,
       csrfToken: req.csrfToken(),
-    }
+    })
   }
 }
