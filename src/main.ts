@@ -7,11 +7,14 @@ import { NotFoundExceptionFilter } from './app/common/filters/not-found-exceptio
 import session from 'express-session'
 import passport from 'passport'
 import flash = require('connect-flash')
-import * as csurf from 'csurf'
+import csurf from 'csurf'
+import helmet from 'helmet'
 require('dotenv').config()
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule)
+
+  app.use(helmet())
 
   app.useStaticAssets(join(__dirname, '..', 'public'))
   app.setBaseViewsDir(join(__dirname, '..', 'views'))
@@ -25,6 +28,11 @@ async function bootstrap() {
       secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
+      cookie: {
+        secure: true,
+        httpOnly: true,
+        maxAge: 24 * 60 * 60 * 1000, // 1 day
+      },
     }),
   )
 

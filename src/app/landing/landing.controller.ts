@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Render } from '@nestjs/common'
+import { Controller, Get, Post, Render, Session } from '@nestjs/common'
 
 @Controller()
 export class LandingController {
@@ -10,7 +10,7 @@ export class LandingController {
 
   @Get('/signup')
   @Render('authentication')
-  signup() {
+  signup(@Session() session: Record<string, any>) {
     // TODO
     // 1. gen base64 token "RESUME="{A-Z,a-z,0-9}{32}"
     // 2. set it into session
@@ -18,7 +18,7 @@ export class LandingController {
   }
 
   @Post('/signup')
-  validatePlayer() {
+  validatePlayer(@Session() session: Record<string, any>) {
     // TODO
     // 1. get token from session
     // 2. retrieve token from lodestone

@@ -1,5 +1,6 @@
-import { Controller, Get, Render } from '@nestjs/common'
-import { CreateResumeService } from './createResume.service'
+import { Controller, Get, Render, Req, Session } from '@nestjs/common'
+import { Request } from 'express'
+import { CreateResumeService } from './create-resume.service'
 import { RoleService } from '../service/role.service'
 import { DatacenterService } from '../service/datacenter.service'
 import { RaidService } from '../service/raid.service'
@@ -15,9 +16,8 @@ export class ResumeController {
 
   @Get('create')
   @Render('resume/create')
-  async create() {
+  async create(@Session() session: Record<string, any>) {
     // TODO: get characterId from session
-    // if no characterId, redirect into signup
 
     const datacenters = await this.datacenterService.findAll()
     const roles = await this.jobService.findAll()

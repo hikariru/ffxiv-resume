@@ -19,4 +19,8 @@ export class AuthService {
 
     return null
   }
+
+  async retrieveToken(playerId: number): Promise<any> {
+    // TODO: access Lodestone and fetch token from "Character Profile"
+  }
 }
