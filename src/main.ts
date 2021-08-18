@@ -4,9 +4,10 @@ import { NestExpressApplication } from '@nestjs/platform-express'
 import { join } from 'path'
 import * as hbs from 'hbs'
 import { NotFoundExceptionFilter } from './app/common/filters/not-found-exception.filter'
-import session from "express-session";
-import passport from "passport";
-import flash = require('connect-flash');
+import session from 'express-session'
+import passport from 'passport'
+import flash = require('connect-flash')
+import * as csurf from 'csurf'
 require('dotenv').config()
 
 async function bootstrap() {
@@ -24,11 +25,14 @@ async function bootstrap() {
       secret: process.env.SESSION_SECRET,
       resave: false,
       saveUninitialized: false,
-    })
+    }),
   )
+
   app.use(passport.initialize())
   app.use(passport.session())
   app.use(flash())
+
+  app.use(csurf())
 
   app.useGlobalFilters(new NotFoundExceptionFilter())
   await app.listen(Number(process.env.PORT) || 3000)

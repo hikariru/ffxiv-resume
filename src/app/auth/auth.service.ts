@@ -8,8 +8,13 @@ export class AuthService {
   async validatePlayer(playerId: number, password: string): Promise<any> {
     const player = await this.playerService.findByCharacterId(playerId)
 
+    if (!player) {
+      return null
+    }
+
     if (await player.validatePassword(password)) {
-      return player
+      const { password, ...result } = player
+      return result
     }
 
     return null

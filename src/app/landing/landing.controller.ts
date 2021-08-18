@@ -1,4 +1,4 @@
-import {Controller, Get, Post, Render} from '@nestjs/common'
+import { Controller, Get, Post, Render } from '@nestjs/common'
 
 @Controller()
 export class LandingController {
@@ -8,7 +8,7 @@ export class LandingController {
     return { title: 'Hello!' }
   }
 
-  @Get("/signup")
+  @Get('/signup')
   @Render('authentication')
   signup() {
     // TODO
@@ -17,16 +17,14 @@ export class LandingController {
     // 3. render with token
   }
 
-  @Post("/signup")
+  @Post('/signup')
   validatePlayer() {
     // TODO
     // 1. get token from session
     // 2. retrieve token from lodestone
     // 3. validate token
-
     // if the player has own resume already
     // redirect to resume page with flash message like "プロフィールを作成済みなようです"
-
     // else, redirect to create page
   }
 }

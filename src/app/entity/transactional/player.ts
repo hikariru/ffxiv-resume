@@ -1,5 +1,6 @@
 import {
-  AfterLoad, BeforeInsert,
+  AfterLoad,
+  BeforeInsert,
   Column,
   CreateDateColumn,
   Entity,

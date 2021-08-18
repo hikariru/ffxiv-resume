@@ -16,7 +16,8 @@ export class ResumeController {
   @Get('create')
   @Render('resume/create')
   async create() {
-    // TODO:
+    // TODO: get characterId from session
+    // if no characterId, redirect into signup
 
     const datacenters = await this.datacenterService.findAll()
     const roles = await this.jobService.findAll()
