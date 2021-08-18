@@ -8,6 +8,12 @@ export class LandingController {
     return { title: 'Hello!' }
   }
 
+  @Get('/terms')
+  @Render('terms')
+  terms() {
+    return { title: 'Terms' }
+  }
+
   @Get('/signup')
   @Render('authentication')
   signup(@Session() session: Record<string, any>) {
