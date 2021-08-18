@@ -51,7 +51,6 @@
     "eslint": "^7.30.0",
     "eslint-config-prettier": "^8.3.0",
     "eslint-plugin-prettier": "^3.4.0",
-    "husky": "^7.0.1",
     "jest": "27.0.6",
     "prettier": "^2.3.2",
     "supertest": "^6.1.3",
@@ -83,7 +82,6 @@
     "migration:generate": "npm run build && npx typeorm migration:generate -n",
     "migration:run": "npm run build && npx typeorm migration:run",
     "prebuild": "rimraf dist",
-    "precommit": "npm run format",
     "nest start": "nest start",
     "start:debug": "nest start --debug --watch",
     "start:dev": "nest start --watch",
@@ -93,10 +91,5 @@
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "test:watch": "jest --watch"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "precommit"
-    }
   }
 }
