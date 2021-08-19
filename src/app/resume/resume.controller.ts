@@ -1,4 +1,4 @@
-import { Controller, Get, Render, Req, Res, Session } from '@nestjs/common'
+import { Controller, Get, Param, Post, Req, Res, Session } from '@nestjs/common'
 import { Request, Response } from 'express'
 import { CreateResumeService } from './create-resume.service'
 import { RoleService } from '../service/role.service'
@@ -34,5 +34,10 @@ export class ResumeController {
       characterId: characterId,
       csrfToken: req.csrfToken(),
     })
+  }
+
+  @Post('create')
+  async createSave(@Res() res: Response, @Param() params: string[]) {
+    res.redirect('/')
   }
 }

@@ -14,7 +14,7 @@ import {
 import { World } from '../master/world'
 import { Profile } from './profile'
 import { RaidProgress } from './raidProgress'
-import {IsInt, IsNotEmpty, Matches} from 'class-validator'
+import { IsInt, IsNotEmpty, Matches } from 'class-validator'
 import bcrypt from 'bcrypt'
 require('dotenv').config()
 
@@ -24,11 +24,11 @@ export class Player {
   readonly id?: number
 
   @Column({ type: 'varchar', length: 255 })
-  @Matches("^[A-Z][a-z'-]{0,14}$", 'i')
+  @Matches("^[A-Z][a-z'-]{1,14}$", 'i')
   firstName: string
 
   @Column({ type: 'varchar', length: 255 })
-  @Matches("^[A-Z][a-z'-]{0,14}$", 'i')
+  @Matches("^[A-Z][a-z'-]{1,14}$", 'i')
   lastName: string
 
   @Column({ type: 'int' })

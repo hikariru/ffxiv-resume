@@ -10,6 +10,7 @@ import * as passport from 'passport'
 import flash = require('connect-flash')
 import * as csurf from 'csurf'
 import * as helmet from 'helmet'
+import { urlencoded } from 'express'
 require('dotenv').config()
 
 async function bootstrap() {
@@ -38,7 +39,12 @@ async function bootstrap() {
   app.use(flash())
 
   app.use(CookieParser())
-  app.use(csurf({ cookie: { key: '_csrf', sameSite: true, secure: true, httpOnly: true } }))
+  app.use(
+    urlencoded({
+      extended: true,
+    }),
+  )
+  app.use(csurf({ sessionKey: process.env.SESSION_SECRET, cookie: true }))
 
   app.useGlobalFilters(new NotFoundExceptionFilter())
   await app.listen(Number(process.env.PORT) || 3000)
