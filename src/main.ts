@@ -11,12 +11,14 @@ import flash = require('connect-flash')
 import * as csurf from 'csurf'
 import * as helmet from 'helmet'
 import { urlencoded } from 'express'
+import * as compression from 'compression'
 require('dotenv').config()
 
 async function bootstrap() {
   const app = await NestFactory.create<NestExpressApplication>(AppModule)
 
   app.use(helmet())
+  app.use(compression())
 
   app.useStaticAssets(join(__dirname, '..', 'public'))
   app.setBaseViewsDir(join(__dirname, '..', 'views'))
