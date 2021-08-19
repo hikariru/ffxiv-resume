@@ -14,7 +14,7 @@ import {
 import { World } from '../master/world'
 import { Profile } from './profile'
 import { RaidProgress } from './raidProgress'
-import { IsInt, Matches } from 'class-validator'
+import {IsInt, IsNotEmpty, Matches} from 'class-validator'
 import bcrypt from 'bcrypt'
 require('dotenv').config()
 
@@ -41,6 +41,7 @@ export class Player {
   @OneToMany(() => RaidProgress, (raidProgress) => raidProgress.player)
   raidProgress: RaidProgress
 
+  @IsNotEmpty()
   rawPassword: string
 
   @Column({ type: 'varchar', length: 255 })
@@ -71,7 +72,7 @@ export class Player {
   }
 
   async validatePassword(password): Promise<boolean> {
-    const hasedPassword = await bcrypt.hash(this.rawPassword, process.env.SALT)
+    const hasedPassword = await bcrypt.hash(password, process.env.SALT)
     return this.password === hasedPassword
   }
 
