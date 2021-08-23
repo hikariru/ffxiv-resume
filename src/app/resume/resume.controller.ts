@@ -1,17 +1,17 @@
-import { Controller, Get, Param, Post, Req, Res, Session } from '@nestjs/common'
+import { Body, Controller, Get, Param, Post, Req, Res, Session } from '@nestjs/common'
 import { Request, Response } from 'express'
-import { CreateResumeService } from './create-resume.service'
 import { RoleService } from '../service/role.service'
 import { DatacenterService } from '../service/datacenter.service'
 import { RaidService } from '../service/raid.service'
+import { CreateResumeService } from './create-resume.service'
 
 @Controller('resume')
 export class ResumeController {
   constructor(
-    private readonly createService: CreateResumeService,
     private readonly jobService: RoleService,
     private readonly datacenterService: DatacenterService,
     private readonly raidService: RaidService,
+    private readonly createResumeService: CreateResumeService,
   ) {}
 
   @Get('create')
@@ -37,7 +37,34 @@ export class ResumeController {
   }
 
   @Post('create')
-  async createSave(@Res() res: Response, @Param() params: string[]) {
+  async createSave(
+    @Res() res: Response,
+    @Body('first-name') firstName: string,
+    @Body('last-name') lastName: string,
+    @Body('character-id') characterId: string,
+    @Body('world-id') worldId: string,
+    @Body('password') password: string,
+    @Body('job-id') jobId: string,
+    @Body('twitter-id') twitterId: string,
+    @Body('discord-id') discordId: string,
+    @Body('active-time') activeTime: string,
+    @Body('description') description: string,
+  ) {
+    const playerId = await this.createResumeService.create(
+      firstName,
+      lastName,
+      characterId,
+      worldId,
+      password,
+      jobId,
+      twitterId,
+      discordId,
+      activeTime,
+      description,
+    )
+
+    console.log(playerId)
+
     res.redirect('/')
   }
 }

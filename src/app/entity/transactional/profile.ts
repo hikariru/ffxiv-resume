@@ -15,7 +15,7 @@ import { IsInt, Matches } from 'class-validator'
 @Entity({ name: 'profiles' })
 export class Profile {
   @PrimaryColumn({ type: 'int' })
-  playerId: number
+  playerId?: number
 
   @OneToOne(() => Player, (player) => player.profile, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'playerId' })
@@ -33,11 +33,11 @@ export class Profile {
   activeTime?: string
 
   @Column({ type: 'varchar', length: 255, nullable: true })
-  @Matches('^(w{1,15})$', 'i')
+  @Matches('^(\\w{1,15})$', 'i')
   twitterId?: string
 
   @Column({ type: 'varchar', length: 255, nullable: true })
-  @Matches('^(.*)#(d{4})$', 'i')
+  @Matches('^(.*)#(\\d{4})$', 'i')
   discordId?: string
 
   @Column({ type: 'varchar', nullable: true })
@@ -49,15 +49,7 @@ export class Profile {
   @UpdateDateColumn()
   readonly updatedAt?: Date
 
-  constructor(
-    playerId: number,
-    mainJobId: number,
-    twitterId: string,
-    discordId: string,
-    activeTime: string,
-    description: string,
-  ) {
-    this.playerId = playerId
+  constructor(mainJobId: number, twitterId: string, discordId: string, activeTime: string, description: string) {
     this.mainJobId = mainJobId
     this.twitterId = twitterId || null
     this.discordId = discordId || null

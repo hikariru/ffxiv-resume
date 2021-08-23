@@ -1,6 +1,6 @@
 <div class="col-md-3">
-  <label for="world" class="form-label">ワールド*</label>
-  <select class="form-select" id="world" name="world">
+  <label for="world-id" class="form-label">ワールド*</label>
+  <select class="form-select" id="world-id" name="world-id">
     {{#each datacenters}}
       <optgroup label="{{ name }}">
         {{#each worlds}}
@@ -11,8 +11,8 @@
   </select>
 </div>
 <div class="col-md-3">
-  <label for="job" class="form-label">メインジョブ*</label>
-  <select class="form-select" id="job" name="job">
+  <label for="job-id" class="form-label">メインジョブ*</label>
+  <select class="form-select" id="job-id" name="job-id">
     {{#each roles}}
       <optgroup label="{{ name }}">
         {{#each jobs}}

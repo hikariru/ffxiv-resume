@@ -15,7 +15,7 @@ import { World } from '../master/world'
 import { Profile } from './profile'
 import { RaidProgress } from './raidProgress'
 import { IsInt, IsNotEmpty, Matches } from 'class-validator'
-import bcrypt from 'bcrypt'
+import * as bcrypt from 'bcrypt'
 require('dotenv').config()
 
 @Entity({ name: 'players' })
