@@ -13,7 +13,7 @@ import {
 } from 'typeorm'
 import { World } from '../master/world'
 import { Profile } from './profile'
-import { RaidProgress } from './raidProgress'
+import { RaidProgress } from './raid-progress'
 import { IsInt, IsNotEmpty, Matches } from 'class-validator'
 import * as bcrypt from 'bcrypt'
 require('dotenv').config()

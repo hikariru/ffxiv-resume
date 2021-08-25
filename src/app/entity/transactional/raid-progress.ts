@@ -27,7 +27,7 @@ export class RaidProgress {
   @Column()
   volumeId: number
 
-  @ManyToOne(() => Volume)
+  @ManyToOne(() => Volume, { onDelete: 'CASCADE' })
   @JoinColumn({ name: 'volumeId' })
   readonly volume: Volume
 

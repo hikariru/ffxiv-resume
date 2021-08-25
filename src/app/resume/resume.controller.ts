@@ -49,21 +49,24 @@ export class ResumeController {
     @Body('discord-id') discordId: string,
     @Body('active-time') activeTime: string,
     @Body('description') description: string,
+    @Body('raid-progress') raidProgress: string[]
   ) {
-    const playerId = await this.createResumeService.create(
-      firstName,
-      lastName,
-      characterId,
-      worldId,
-      password,
-      jobId,
-      twitterId,
-      discordId,
-      activeTime,
-      description,
-    )
-
-    console.log(playerId)
+    console.log(raidProgress)
+    // const playerId = await this.createResumeService.create(
+    //   firstName,
+    //   lastName,
+    //   characterId,
+    //   worldId,
+    //   password,
+    //   jobId,
+    //   twitterId,
+    //   discordId,
+    //   activeTime,
+    //   description,
+    //   raidProgress
+    // )
+    //
+    // console.log(playerId)
 
     res.redirect('/')
   }

@@ -23,6 +23,7 @@ export class CreateResumeService {
     discordId: string,
     activeTime: string,
     description: string,
+    raidProgress: string[]
   ): Promise<number> {
     const characterId = Number(rawCharacterId)
     const worldId = Number(rawWorldId)
